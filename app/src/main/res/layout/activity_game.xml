@@ -18,21 +18,21 @@
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/Card" />
+            app:srcCompat="@drawable/card_s" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/Card" />
+            app:srcCompat="@drawable/card_s" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/Card" />
+            app:srcCompat="@drawable/card_s" />
     </LinearLayout>
 
     <FrameLayout
@@ -65,21 +65,21 @@
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/Card" />
+            app:srcCompat="@drawable/card_s" />
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/Card" />
+            app:srcCompat="@drawable/card_s" />
 
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/Card" />
+            app:srcCompat="@drawable/card_s" />
     </LinearLayout>
 
 </LinearLayout>
