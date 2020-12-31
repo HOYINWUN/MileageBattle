@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "636411053870",
+    "project_id": "mileage-battle",
+    "storage_bucket": "mileage-battle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636411053870:android:6d47781d14081759551cbf",
+        "android_client_info": {
+          "package_name": "ncku.geo.MileageBattle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636411053870-o6v8ojckskri8pin9rfuot40558tteuj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUI3ePn_xdBtBrwqL0LsPSBJhpGgIE8b4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636411053870-o6v8ojckskri8pin9rfuot40558tteuj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
