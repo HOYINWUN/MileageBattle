@@ -83,7 +83,7 @@ public class ChooseTurn extends AppCompatActivity {
 	@Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == 11 && resultCode == RESULT_OK){
-            //
+            ///
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
