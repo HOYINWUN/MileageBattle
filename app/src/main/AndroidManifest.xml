@@ -13,6 +13,7 @@
         android:theme="@style/Theme.MileageBattle">
         <activity android:name=".LastPage"></activity>
         <activity android:name=".GamePage" />
+        <activity android:name=".ChooseTurn" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
