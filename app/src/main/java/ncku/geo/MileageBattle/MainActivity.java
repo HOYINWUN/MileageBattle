@@ -100,9 +100,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             onPause();
 
             //change to second page
-//            Intent it=new Intent();
-//            it.setClass(this,LastPage.class);
-//            startActivity(it);
+            Intent it=new Intent();
+            it.setClass(this,ChooseTurn.class);
+            startActivity(it);
         }
         if(params.verticalBias<0.05){
             onPause();

@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Criteria;
@@ -60,6 +61,9 @@ public class GamePage extends AppCompatActivity implements LocationListener, OnM
 
         SupportMapFragment smf = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
         smf.getMapAsync(this);
+
+        Intent it = getIntent();
+        int cardset = it.getIntExtra("cardset_num",-1);
 
     }
     double lat = 22.994981960446914;
