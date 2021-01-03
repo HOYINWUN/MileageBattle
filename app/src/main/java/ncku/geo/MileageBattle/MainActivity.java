@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -97,6 +98,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             tos.setText("Welcome!");
             tos.show();
             onPause();
+
+            //change to second page
+//            Intent it=new Intent();
+//            it.setClass(this,LastPage.class);
+//            startActivity(it);
         }
         if(params.verticalBias<0.05){
             onPause();
