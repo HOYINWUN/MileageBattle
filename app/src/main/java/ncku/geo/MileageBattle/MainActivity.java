@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     AlertDialog.Builder bdr;
     String ruleText="";
     Toast tos;
+    float vx=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,11 +63,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        float x=event.values[0];
         ConstraintLayout.LayoutParams params=(ConstraintLayout.LayoutParams)character.getLayoutParams();
         character=findViewById(R.id.character1);
         //control character
-        params.horizontalBias=(-x+9)/18;
+        vx -= (event.values[0]+1) * 0.0005f;
+        if(vx > 0.01)vx=0.01f;
+        if(vx < -0.01)vx=-0.01f;
+        params.horizontalBias+=vx;
         if(params.horizontalBias<0){
             params.horizontalBias=0;
         }
@@ -114,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if(params.verticalBias<0.05){
             onPause();
             bdr.show();
+            vx=0;
         }
         character.setLayoutParams(params);
     }
@@ -127,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onResume() {
         super.onResume();
+        play_music(R.raw.testmusic, 0);
         sm.registerListener(this,sr,SensorManager.SENSOR_DELAY_NORMAL);
         ConstraintLayout.LayoutParams paras=(ConstraintLayout.LayoutParams) character.getLayoutParams();
         paras.horizontalBias=0.7f;
