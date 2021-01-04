@@ -11,9 +11,13 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener, DialogInterface.OnClickListener{
 
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         bdr.setTitle("Rule");
         bdr.setMessage(ruleText);
         bdr.setPositiveButton("確認",this);
+        play_music(R.raw.testmusic, 0);
 
     }
 
@@ -102,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             //change to second page
             Intent it=new Intent();
             it.setClass(this,ChooseTurn.class);
+            it.putExtra("music_time", mp.getCurrentPosition());
+            mp.stop();
             startActivity(it);
         }
         if(params.verticalBias<0.05){
@@ -136,6 +143,23 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onClick(DialogInterface dialog, int which) {
         if(which==DialogInterface.BUTTON_POSITIVE){
             onResume();
+        }
+    }
+
+    MediaPlayer mp;
+    public void play_music(int source, int time){
+        mp = new MediaPlayer();
+        mp.reset();
+        mp.setOnPreparedListener(mp2 -> {
+            mp.start();
+            mp.seekTo(time);
+            mp.setLooping(true);
+        });
+        try {
+            mp.setDataSource(this, Uri.parse("android.resource://"+getPackageName()+"/"+source));
+            mp.prepareAsync();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

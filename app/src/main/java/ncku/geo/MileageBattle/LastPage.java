@@ -3,9 +3,13 @@ package ncku.geo.MileageBattle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import java.io.IOException;
 
 public class LastPage extends AppCompatActivity {
 
@@ -17,6 +21,7 @@ public class LastPage extends AppCompatActivity {
         Button btn2 = findViewById(R.id.toSecond_btn);
         btn1.setBackgroundColor(0xFFC6B8B8);
         btn2.setBackgroundColor(0xFFC6B8B8);
+        play_music(R.raw.testmusic, 0);
     }
     public void backTofirst(View v){
         Intent it=new Intent();
@@ -27,5 +32,22 @@ public class LastPage extends AppCompatActivity {
         Intent it=new Intent();
         it.setClass(this,ChooseTurn.class);
         startActivity(it);
+    }
+
+    MediaPlayer mp;
+    public void play_music(int source, int time){
+        mp = new MediaPlayer();
+        mp.reset();
+        mp.setOnPreparedListener(mp2 -> {
+            mp.start();
+            mp.seekTo(time);
+            mp.setLooping(true);
+        });
+        try {
+            mp.setDataSource(this, Uri.parse("android.resource://"+getPackageName()+"/"+source));
+            mp.prepareAsync();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

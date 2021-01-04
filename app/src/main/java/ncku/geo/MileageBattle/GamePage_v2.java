@@ -3,6 +3,7 @@ package ncku.geo.MileageBattle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.ComponentActivity;
 
 import android.Manifest;
 import android.content.Context;
@@ -12,6 +13,8 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -23,6 +26,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
 
 public class GamePage_v2 extends AppCompatActivity implements LocationListener , OnMapReadyCallback {
 
@@ -60,6 +65,7 @@ public class GamePage_v2 extends AppCompatActivity implements LocationListener ,
 
         Intent it = getIntent();
         int cardset = it.getIntExtra("cardset_num",-1);
+        play_music(R.raw.african, 0);
 
     }
 
@@ -94,5 +100,22 @@ public class GamePage_v2 extends AppCompatActivity implements LocationListener ,
         Map.moveCamera(CameraUpdateFactory.zoomTo(17));
         tos.setText("Ready");
         tos.show();
+    }
+
+    MediaPlayer mp;
+    public void play_music(int source, int time){
+        mp = new MediaPlayer();
+        mp.reset();
+        mp.setOnPreparedListener(mp2 -> {
+            mp.start();
+            mp.seekTo(time);
+            mp.setLooping(true);
+        });
+        try {
+            mp.setDataSource(this, Uri.parse("android.resource://"+getPackageName()+"/"+source));
+            mp.prepareAsync();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
