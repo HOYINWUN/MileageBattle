@@ -118,4 +118,10 @@ public class GamePage_v2 extends AppCompatActivity implements LocationListener ,
             e.printStackTrace();
         }
     }
+
+    @Override
+    protected void onPause() {
+        mp.stop();
+        super.onPause();
+    }
 }

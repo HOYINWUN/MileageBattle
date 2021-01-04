@@ -153,4 +153,9 @@ public class ChooseTurn extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onPause() {
+        mp.stop();
+        super.onPause();
+    }
 }
