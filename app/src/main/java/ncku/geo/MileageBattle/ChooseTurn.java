@@ -73,8 +73,8 @@ public class ChooseTurn extends AppCompatActivity {
             pp.setImageResource(getimageresourcee(countryy_pair[cardset][1]));
             findViewById(R.id.button_intogamepage).setVisibility(View.VISIBLE);
         }
-
         tt.setVisibility(View.VISIBLE);
+        pp.setOnClickListener(null);
     }
 
     public void startthegame(View v){
