@@ -25,7 +25,7 @@ public class LastPage extends AppCompatActivity {
     }
     public void backTosecond(View v){
         Intent it=new Intent();
-        it.setClass(this,GamePage.class);
+        it.setClass(this,ChooseTurn.class);
         startActivity(it);
     }
 }
