@@ -80,7 +80,7 @@ public class ChooseTurn extends AppCompatActivity {
     public void startthegame(View v){
         onPause();
         Intent it = new Intent();
-        it.setClass(this, GamePage.class);
+        it.setClass(this, GamePage_v2.class);
         it.putExtra("cardset_num", cardset);
         it.putExtra("start_with", start_with_player);
         startActivityForResult(it, 11);

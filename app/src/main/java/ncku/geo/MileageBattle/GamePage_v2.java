@@ -8,38 +8,34 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
 import android.location.Criteria;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.internal.IMapFragmentDelegate;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
+public class GamePage_v2 extends AppCompatActivity implements LocationListener , OnMapReadyCallback {
 
-import 	java.lang.Math;
-
-public class GamePage extends AppCompatActivity implements LocationListener, OnMapReadyCallback {
-
+    double lat = 22.994981960446914;
+    double lng = 120.22902201915186;
+    GoogleMap Map=null;
+    Toast tos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_game_page_v2);
 
+        tos=Toast.makeText(this,"",Toast.LENGTH_SHORT);
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -56,31 +52,29 @@ public class GamePage extends AppCompatActivity implements LocationListener, OnM
             return;
         }
         String pro = lm.getBestProvider(new Criteria(), true);
-        //((TextView) findViewById(R.id.textView)).setText(pro + "");
-        lm.requestLocationUpdates(pro, 500, 5, this);
-
-        SupportMapFragment smf = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
+        //lm.requestLocationUpdates(pro, 5000, 5, this);
+        lm.requestLocationUpdates("network", 5000, 5, this);
+//        ((TextView)findViewById(R.id.textView)).setText(lat+""+lng);
+        SupportMapFragment smf=(SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
         smf.getMapAsync(this);
 
         Intent it = getIntent();
         int cardset = it.getIntExtra("cardset_num",-1);
 
     }
-    double lat = 22.994981960446914;
-    double lng = 120.22902201915186;
+
     @Override
     public void onLocationChanged(@NonNull Location location) {
-
-        double lat = location.getLatitude();
-        double lon = location.getLongitude();
-        double alt = location.getAltitude();
-
-
+        lat = location.getLatitude();
+        lng = location.getLongitude();
+//        ((TextView)findViewById(R.id.textView)).setText(lat+"\n"+lng);
+        Map.clear();
         if(Map != null)
         {
-            LatLng currLoc = new LatLng(lat, lon);
+
+            LatLng currLoc = new LatLng(lat,lng);
             Map.moveCamera(CameraUpdateFactory.newLatLng(currLoc));
-            Map.clear();
+            Map.moveCamera(CameraUpdateFactory.zoomTo(17));
             MarkerOptions mo = new MarkerOptions();
             mo.position(currLoc).title("Here");
             Map.addMarker(mo);
@@ -92,12 +86,13 @@ public class GamePage extends AppCompatActivity implements LocationListener, OnM
 
     }
 
-    GoogleMap Map = null;
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Map = googleMap;
+        Map=googleMap;
         Map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         Map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(23, 120.22)));
         Map.moveCamera(CameraUpdateFactory.zoomTo(17));
+        tos.setText("Ready");
+        tos.show();
     }
 }
