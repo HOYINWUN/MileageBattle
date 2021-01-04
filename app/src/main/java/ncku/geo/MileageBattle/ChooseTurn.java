@@ -50,6 +50,7 @@ public class ChooseTurn extends AppCompatActivity {
     int cardset = -1;
     String string_tmp1;
     String[][] countryy_pair = new String[8][2];
+    int start_with_player = 0;
 
     private void chooseit(ImageView pp, TextView tt){
         if(first_to_choose) {
@@ -57,15 +58,19 @@ public class ChooseTurn extends AppCompatActivity {
             if (Math.random() > 0.5) {
                 tt.setText("先手\n起點為: ");
                 string_tmp1 = "後手\n起點為: ";
+                start_with_player = 1;
             }else{
                 tt.setText("後手\n起點為: ");
                 string_tmp1 = "先手\n起點為: ";
+                start_with_player = 2;
             }
             first_to_choose = false;
             tt.append("\n"+countryy_pair[cardset][0]);
+            pp.setImageResource(getimageresourcee(countryy_pair[cardset][0]));
         }else{
             tt.setText(string_tmp1);
             tt.append("\n"+countryy_pair[cardset][1]);
+            pp.setImageResource(getimageresourcee(countryy_pair[cardset][1]));
             findViewById(R.id.button_intogamepage).setVisibility(View.VISIBLE);
         }
 
@@ -77,15 +82,52 @@ public class ChooseTurn extends AppCompatActivity {
         Intent it = new Intent();
         it.setClass(this, GamePage.class);
         it.putExtra("cardset_num", cardset);
+        it.putExtra("start_with", start_with_player);
         startActivityForResult(it, 11);
     }
 	
 	@Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == 11 && resultCode == RESULT_OK){
-            ///
+            //
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private int getimageresourcee(String s){
+        switch (s) {
+            case "台灣":
+                return R.drawable.f00;
+            case "日本":
+                return R.drawable.f00;
+            case "韓國":
+                return R.drawable.f00;
+            case "俄羅斯":
+                return R.drawable.f00;
+            case "大陸":
+                return R.drawable.f00;
+            case "菲律賓":
+                return R.drawable.f00;
+            case "泰國":
+                return R.drawable.f00;
+            case "孟加拉":
+                return R.drawable.f00;
+            case "印尼":
+                return R.drawable.f00;
+            case "馬來西亞":
+                return R.drawable.f00;
+            case "越南":
+                return R.drawable.f00;
+            case "蒙古":
+                return R.drawable.f00;
+            case "緬甸":
+                return R.drawable.f00;
+            case "新加坡":
+                return R.drawable.f00;
+            case "香港":
+                return R.drawable.f00;
+        }
+        return R.drawable.card_s;
     }
 
 }
