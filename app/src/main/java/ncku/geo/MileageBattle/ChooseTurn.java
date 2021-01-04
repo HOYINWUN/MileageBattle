@@ -4,11 +4,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaDataSource;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ChooseTurn extends AppCompatActivity {
@@ -17,6 +21,7 @@ public class ChooseTurn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_turn);
+        Intent it = getIntent();
         c1 = findViewById(R.id.choose_c1);
         c2 = findViewById(R.id.choose_c2);
         t1 = findViewById(R.id.text_c1);
@@ -42,6 +47,7 @@ public class ChooseTurn extends AppCompatActivity {
         countryy_pair[6] = new String[]{"蒙古","新加坡"};
         countryy_pair[7] = new String[]{"緬甸","印尼"};
 
+        play_music(R.raw.testmusic, it.getIntExtra("music_time", 0));
     }
 
     ImageView c1, c2;
@@ -78,7 +84,7 @@ public class ChooseTurn extends AppCompatActivity {
     }
 
     public void startthegame(View v){
-        onPause();
+        mp.stop();
         Intent it = new Intent();
         it.setClass(this, GamePage_v2.class);
         it.putExtra("cardset_num", cardset);
@@ -128,6 +134,23 @@ public class ChooseTurn extends AppCompatActivity {
                 return R.drawable.f00;
         }
         return R.drawable.card_s;
+    }
+
+    MediaPlayer mp;
+    public void play_music(int source, int time){
+        mp = new MediaPlayer();
+        mp.reset();
+        mp.setOnPreparedListener(mp2 -> {
+            mp.start();
+            mp.seekTo(time);
+            mp.setLooping(true);
+        });
+        try {
+            mp.setDataSource(this, Uri.parse("android.resource://"+getPackageName()+"/"+source));
+            mp.prepareAsync();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
