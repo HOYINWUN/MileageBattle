@@ -26,6 +26,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.IOException;
 
@@ -35,6 +36,8 @@ public class GamePage_v2 extends AppCompatActivity implements LocationListener ,
     double lng = 120.22902201915186;
     GoogleMap Map=null;
     Toast tos;
+    int cardset;
+    int start_with_player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +67,13 @@ public class GamePage_v2 extends AppCompatActivity implements LocationListener ,
         smf.getMapAsync(this);
 
         Intent it = getIntent();
-        int cardset = it.getIntExtra("cardset_num",-1);
+        cardset = it.getIntExtra("cardset_num",-1);
+        start_with_player = it.getIntExtra("start_with",-1);
+//                if(start_with_player==1){
+//            ((TextView)findViewById(R.id.textView)).setText("先手:"+countryy_pair[cardset][0]+"\n後手:"+countryy_pair[cardset][1]);
+//        }else {
+//            ((TextView)findViewById(R.id.textView)).setText("先手:"+countryy_pair[cardset][1]+"\n後手:"+countryy_pair[cardset][0]);
+//        }
         play_music(R.raw.african, 0);
 
     }
@@ -97,7 +106,15 @@ public class GamePage_v2 extends AppCompatActivity implements LocationListener ,
         Map=googleMap;
         Map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         Map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(23, 120.22)));
-        Map.moveCamera(CameraUpdateFactory.zoomTo(17));
+//        Map.moveCamera(CameraUpdateFactory.zoomTo(17));
+        MarkerOptions mo = new MarkerOptions();
+        mo.position(new LatLng(23, 120.22)).title("Taiwan");
+        Map.addMarker(mo);
+        mo.position(new LatLng(40, 140.22)).title("Japan");
+        Map.addMarker(mo);
+        //add line
+//        Map.addPolyline(new  PolylineOptions().add(new LatLng(23, 120.22)).add(new LatLng(40, 140.22)));
+//        Map.addPolyline(new  PolylineOptions().add(new LatLng(43, 120.22)).add(new LatLng(43, 100.22)));
         tos.setText("Ready");
         tos.show();
     }
