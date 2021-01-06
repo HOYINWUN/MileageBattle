@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     ImageView character;
     ConstraintLayout layout;
     Boolean isgoup=false;
-    float pasthorizontal;
+    //float pasthorizontal;
     AlertDialog.Builder bdr;
     String ruleText="";
     Toast tos;
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         ConstraintLayout.LayoutParams paras=(ConstraintLayout.LayoutParams) character.getLayoutParams();
         paras.horizontalBias=0.7f;
         paras.verticalBias=0.79f;
-        pasthorizontal=paras.horizontalBias;
+        //pasthorizontal=paras.horizontalBias;
         character.setLayoutParams(paras);
         tos=Toast.makeText(this,"",Toast.LENGTH_SHORT);
         bdr=new AlertDialog.Builder(this);
@@ -95,12 +95,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         }
         //change image
-        if(pasthorizontal<params.horizontalBias+0.01){
+        if(vx>0){
             character.setImageDrawable(getResources().getDrawable(R.drawable.character1_nb));
         }else {
             character.setImageDrawable(getResources().getDrawable(R.drawable.character1));
         }
-        pasthorizontal=params.horizontalBias;
+        //pasthorizontal=params.horizontalBias;
         //message
         if(params.horizontalBias==1){
             tos.setText("Welcome!");
@@ -115,7 +115,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             startActivity(it);
         }
         if(params.verticalBias<0.05){
-            onPause();
+            super.onPause();
+            sm.unregisterListener(this);
             bdr.show();
             vx=0;
         }
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onPause() {
         super.onPause();
         sm.unregisterListener(this);
+        mp.pause();
     }
 
     @Override
