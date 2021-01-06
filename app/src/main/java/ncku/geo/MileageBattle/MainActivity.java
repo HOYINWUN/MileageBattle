@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if(vx>0){
             character.setImageDrawable(getResources().getDrawable(R.drawable.character1_nb));
         }else {
-            character.setImageDrawable(getResources().getDrawable(R.drawable.character1));
+            character.setImageResource(R.drawable.character1);
         }
         //pasthorizontal=params.horizontalBias;
         //message
