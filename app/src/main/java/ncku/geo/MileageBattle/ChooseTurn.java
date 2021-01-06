@@ -95,7 +95,10 @@ public class ChooseTurn extends AppCompatActivity {
         it.setClass(this, GamePage_v2.class);
         it.putExtra("cardset_num", cardset);
         it.putExtra("start_with", start_with_player);
+
         startActivityForResult(it, 11);
+
+        //傳起點跟終點
     }
 	
 	@Override
