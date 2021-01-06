@@ -44,9 +44,8 @@ public class ChooseTurn extends AppCompatActivity {
         countryy_pair[2] = new String[]{"韓國","越南"};
         countryy_pair[3] = new String[]{"俄羅斯","泰國"};
         countryy_pair[4] = new String[]{"印尼","香港"};
-        countryy_pair[5] = new String[]{"菲律賓","孟加拉"};
-        countryy_pair[6] = new String[]{"蒙古","新加坡"};
-        countryy_pair[7] = new String[]{"緬甸","印尼"};
+        countryy_pair[5] = new String[]{"蒙古","新加坡"};
+        countryy_pair[6] = new String[]{"緬甸","菲律賓"};
 
         play_music(R.raw.testmusic, it.getIntExtra("music_time", 0));
     }
@@ -56,12 +55,12 @@ public class ChooseTurn extends AppCompatActivity {
     boolean first_to_choose = true;
     int cardset = -1;
     String string_tmp1;
-    String[][] countryy_pair = new String[8][2];
+    String[][] countryy_pair = new String[7][2];
     int start_with_player = 0;
 
     private void chooseit(ImageView pp, TextView tt){
         if(first_to_choose) {
-            cardset = (int) (Math.random() * 7);
+            cardset = (int) (Math.random() * 6);
             if (Math.random() > 0.5) {
                 tt.setText("先手\n起點為: ");
                 string_tmp1 = "後手\n起點為: ";
