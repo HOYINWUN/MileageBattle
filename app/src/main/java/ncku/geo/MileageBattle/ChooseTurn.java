@@ -29,14 +29,14 @@ public class ChooseTurn extends AppCompatActivity {
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseit(c1, t1);
+                chooseit(c1, t1, 1);
 
             }
         });
         c2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseit(c2, t2);
+                chooseit(c2, t2, 2);
             }
         });
         countryy_pair[0] = new String[]{"台灣","馬來西亞"};
@@ -59,25 +59,28 @@ public class ChooseTurn extends AppCompatActivity {
     String[][] countryy_pair = new String[8][2];
     int start_with_player = 0;
 
-    private void chooseit(ImageView pp, TextView tt){
+    private void chooseit(ImageView pp, TextView tt, int player){
         if(first_to_choose) {
             cardset = (int) (Math.random() * 8);
             if (Math.random() > 0.5) {
                 tt.setText("先手\n起點為: ");
                 string_tmp1 = "後手\n起點為: ";
-                start_with_player = 1;
+                start_with_player = player;
+                pp.setImageResource(R.drawable.first);
             }else{
                 tt.setText("後手\n起點為: ");
                 string_tmp1 = "先手\n起點為: ";
-                start_with_player = 2;
+                pp.setImageResource(R.drawable.second);
             }
             first_to_choose = false;
             tt.append("\n"+countryy_pair[cardset][0]);
-            pp.setImageResource(R.drawable.first);
         }else{
+            if (start_with_player == 0) {
+                start_with_player = player;
+                pp.setImageResource(R.drawable.first);
+            }else pp.setImageResource(R.drawable.second);
             tt.setText(string_tmp1);
             tt.append("\n"+countryy_pair[cardset][1]);
-            pp.setImageResource(R.drawable.second);
             findViewById(R.id.button_intogamepage).setVisibility(View.VISIBLE);
         }
         tt.setVisibility(View.VISIBLE);
