@@ -61,7 +61,7 @@ public class ChooseTurn extends AppCompatActivity {
 
     private void chooseit(ImageView pp, TextView tt){
         if(first_to_choose) {
-            cardset = (int) (Math.random() * 7);
+            cardset = (int) (Math.random() * 8);
             if (Math.random() > 0.5) {
                 tt.setText("先手\n起點為: ");
                 string_tmp1 = "後手\n起點為: ";
@@ -70,19 +70,14 @@ public class ChooseTurn extends AppCompatActivity {
                 tt.setText("後手\n起點為: ");
                 string_tmp1 = "先手\n起點為: ";
                 start_with_player = 2;
-
             }
             first_to_choose = false;
             tt.append("\n"+countryy_pair[cardset][0]);
-            if(start_with_player == 1){pp.setImageResource(R.drawable.first);}
-            else if(start_with_player == 2){pp.setImageResource(R.drawable.second);}
-            //pp.setImageResource(getimageresourcee(countryy_pair[cardset][0]));
+            pp.setImageResource(R.drawable.first);
         }else{
             tt.setText(string_tmp1);
             tt.append("\n"+countryy_pair[cardset][1]);
-            if(start_with_player == 1){pp.setImageResource(R.drawable.second);}
-            else if(start_with_player == 2){pp.setImageResource(R.drawable.first);}
-            //pp.setImageResource(getimageresourcee(countryy_pair[cardset][1]));
+            pp.setImageResource(R.drawable.second);
             findViewById(R.id.button_intogamepage).setVisibility(View.VISIBLE);
         }
         tt.setVisibility(View.VISIBLE);
