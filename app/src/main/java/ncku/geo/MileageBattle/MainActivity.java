@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onResume() {
         super.onResume();
-        play_music(R.raw.testmusic, 0);
+        if(!mp.isPlaying()) play_music(R.raw.testmusic, 0);
         sm.registerListener(this,sr,SensorManager.SENSOR_DELAY_NORMAL);
         ConstraintLayout.LayoutParams paras=(ConstraintLayout.LayoutParams) character.getLayoutParams();
         paras.horizontalBias=0.7f;
