@@ -30,7 +30,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.IOException;
 
-public class GamePage_v2 extends AppCompatActivity implements LocationListener , OnMapReadyCallback {
+public class GamePage_v2 extends AppCompatActivity implements /*LocationListener , */OnMapReadyCallback {
 
     double lat = 22.994981960446914;
     double lng = 120.22902201915186;
@@ -61,7 +61,7 @@ public class GamePage_v2 extends AppCompatActivity implements LocationListener ,
         }
         String pro = lm.getBestProvider(new Criteria(), true);
         //lm.requestLocationUpdates(pro, 5000, 5, this);
-        lm.requestLocationUpdates("network", 5000, 5, this);
+        //lm.requestLocationUpdates("network", 5000, 5, this);
 //        ((TextView)findViewById(R.id.textView)).setText(lat+""+lng);
         SupportMapFragment smf=(SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
         smf.getMapAsync(this);
@@ -77,7 +77,7 @@ public class GamePage_v2 extends AppCompatActivity implements LocationListener ,
         play_music(R.raw.african, 0);
 
     }
-
+/*
     @Override
     public void onLocationChanged(@NonNull Location location) {
         lat = location.getLatitude();
@@ -100,7 +100,7 @@ public class GamePage_v2 extends AppCompatActivity implements LocationListener ,
 
 
     }
-
+*/
     @Override
     public void onMapReady(GoogleMap googleMap) {
         Map=googleMap;

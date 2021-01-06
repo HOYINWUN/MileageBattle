@@ -30,6 +30,7 @@ public class ChooseTurn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 chooseit(c1, t1);
+
             }
         });
         c2.setOnClickListener(new View.OnClickListener() {
@@ -69,14 +70,19 @@ public class ChooseTurn extends AppCompatActivity {
                 tt.setText("後手\n起點為: ");
                 string_tmp1 = "先手\n起點為: ";
                 start_with_player = 2;
+
             }
             first_to_choose = false;
             tt.append("\n"+countryy_pair[cardset][0]);
-            pp.setImageResource(getimageresourcee(countryy_pair[cardset][0]));
+            if(start_with_player == 1){pp.setImageResource(R.drawable.first);}
+            else if(start_with_player == 2){pp.setImageResource(R.drawable.second);}
+            //pp.setImageResource(getimageresourcee(countryy_pair[cardset][0]));
         }else{
             tt.setText(string_tmp1);
             tt.append("\n"+countryy_pair[cardset][1]);
-            pp.setImageResource(getimageresourcee(countryy_pair[cardset][1]));
+            if(start_with_player == 1){pp.setImageResource(R.drawable.second);}
+            else if(start_with_player == 2){pp.setImageResource(R.drawable.first);}
+            //pp.setImageResource(getimageresourcee(countryy_pair[cardset][1]));
             findViewById(R.id.button_intogamepage).setVisibility(View.VISIBLE);
         }
         tt.setVisibility(View.VISIBLE);
@@ -99,7 +105,7 @@ public class ChooseTurn extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
+/*
     private int getimageresourcee(String s){
         switch (s) {
             case "台灣":
@@ -135,7 +141,7 @@ public class ChooseTurn extends AppCompatActivity {
         }
         return R.drawable.card_s;
     }
-
+*/
     MediaPlayer mp;
     public void play_music(int source, int time){
         mp = new MediaPlayer();
