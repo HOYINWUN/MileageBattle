@@ -39,6 +39,7 @@ public class GamePage_v2 extends AppCompatActivity implements /*LocationListener
     int cardset;
     int start_with_player;
     String[][] country = new String[15][7];
+    String[][] country_pair = new String[8][2];
 
 
     @Override
@@ -94,6 +95,14 @@ public class GamePage_v2 extends AppCompatActivity implements /*LocationListener
         country[13] = new String[]{"新加坡", "f15", "f19", "f05", "f42", "1.31484423606705", "103.873186930365"};
         country[14] = new String[]{"香港", "f44", "f09", "f37", "f31", "22.3927056941769", "114.050231584071"};
 
+        country_pair[0]	=	new	String[]{"	23.727,120.818	", "	4.474,101.707	"};
+        country_pair[1]	=	new	String[]{"	36.044,138.68	", "	31.612,110.664	"};
+        country_pair[2]	=	new	String[]{"	39.534,126.484	", "	13.156,107.989	"};
+        country_pair[3]	=	new	String[]{"	51.586,116.021	", "	17.241,102.37	"};
+        country_pair[4]	=	new	String[]{"	-1.878,120.553	", "	22.393,114.05	"};
+        country_pair[5]	=	new	String[]{"	12.075,122.779	", "	23.569,90.156	"};
+        country_pair[6]	=	new	String[]{"	46.222,104.951	", "	1.315,103.873	"};
+        country_pair[7]	=	new	String[]{"	22.569,96.09	", "	-1.878,120.553	"};
 
     }
 /*
