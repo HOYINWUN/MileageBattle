@@ -80,7 +80,7 @@ public class ChooseTurn extends AppCompatActivity {
             }else pp.setImageResource(R.drawable.second);
             tt.setText(string_tmp1);
             tt.append("\n"+countryy_pair[cardset][1]);
-            findViewById(R.id.button_intogamepage).setVisibility(View.VISIBLE);
+            findViewById(R.id.go).setVisibility(View.VISIBLE);
         }
         tt.setVisibility(View.VISIBLE);
         pp.setOnClickListener(null);
