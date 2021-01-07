@@ -25,11 +25,12 @@ public class LastPage extends AppCompatActivity {
         btn2.setBackgroundColor(0xFFC6B8B8);
         play_music(R.raw.testmusic, 0);
         Intent game = getIntent();
-        int MeailgeA = game.getIntExtra("MeailgeA", -1);
-        int MeailgeB = game.getIntExtra("MeailgeB", -1);
+
+        Double MeailgeA = game.getDoubleExtra("MeailgeA", -1);
+        Double MeailgeB = game.getDoubleExtra("MeailgeB", -1);
         Boolean winner = game.getBooleanExtra("Winner_is_A?", true);
-        ((TextView)findViewById(R.id.textView2)).setText(winner?"HA HA！YOU WIN！":"OH NO！YOU LOOSE！\n里程數："+MeailgeA);
-        ((TextView)findViewById(R.id.textView3)).setText(winner?"OH NO！YOU LOOSE！":"HA HA！YOU WIN！\n里程數："+MeailgeB);
+        ((TextView)findViewById(R.id.textView2)).setText(winner?"HA HA！YOU WIN！":"OH NO！YOU LOOSE！\n里程數："+String.format("%.2f",MeailgeA));
+        ((TextView)findViewById(R.id.textView3)).setText(winner?"OH NO！YOU LOOSE！":"HA HA！YOU WIN！\n里程數："+String.format("%.2f",MeailgeB));
 
     }
     public void backTofirst(View v){
