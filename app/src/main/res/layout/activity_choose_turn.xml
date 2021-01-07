@@ -7,34 +7,29 @@
     android:background="#FFE595"
     tools:context=".ChooseTurn">
 
-    <Button
-        android:id="@+id/button_intogamepage"
-        android:layout_width="88dp"
-        android:layout_height="93dp"
-        android:background="@android:color/transparent"
+    <ImageView
+        android:id="@+id/go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="startthegame"
-        android:visibility="gone"
-        app:icon="@drawable/go_icon"
-        app:iconPadding="0dp"
-        app:iconTint="#730000"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/go_icon" />
 
     <ImageView
         android:id="@+id/choose_c2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="TODO"
         android:scaleY="-1"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button_intogamepage"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        app:srcCompat="@drawable/card_s"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/card_s" />
 
     <ImageView
         android:id="@+id/choose_c1"

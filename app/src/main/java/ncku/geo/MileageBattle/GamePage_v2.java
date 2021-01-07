@@ -132,8 +132,10 @@ public class GamePage_v2 extends AppCompatActivity implements /*LocationListener
         FindState();
         start_A = a;
         start_B = b;
-        ((TextView)findViewById(R.id.ticket_a)).setText("里數機票："+t_a+"張");
-        ((TextView)findViewById(R.id.ticket_b)).setText("里數機票："+t_b+"張");
+        MeailgeA = 0.0;
+        MeailgeB = 0.0;
+        ((TextView)findViewById(R.id.ticket_a)).setText("里數機票："+t_a+"張\n累積里數"+MeailgeA);
+        ((TextView)findViewById(R.id.ticket_b)).setText("里數機票："+t_b+"張\n累積里數"+MeailgeB);
         button_set();
         A1 = (int) (R.drawable.f00 + Math.floor(Math.random()*45));
         A2 = (int) (R.drawable.f00 + Math.floor(Math.random()*45));
@@ -206,24 +208,26 @@ public class GamePage_v2 extends AppCompatActivity implements /*LocationListener
             if(State_a == country[i][0])a=i;
             if(State_b == country[i][0])b=i;
         }
+        MeailgeA = Math.sqrt(Math.pow(country_coordinate[a][0]-country_coordinate[start_A][0], 2)+Math.pow(country_coordinate[a][1]-country_coordinate[start_A][1], 2));
+        MeailgeB = Math.sqrt(Math.pow(country_coordinate[b][0]-country_coordinate[start_B][0], 2)+Math.pow(country_coordinate[b][1]-country_coordinate[start_B][1], 2));
+
     }
+
 
     public void buy_Ticket(View V){
         Button t = (Button)V;
         if(V.getId() == R.id.a1 || V.getId() == R.id.a2 || V.getId() == R.id.a3){
             t_a--;
             Des_a = t.getText().toString();
-            ((TextView)findViewById(R.id.ticket_a)).setText("里數機票："+t_a+"張\n從"+State_a+"到"+Des_a);
+            ((TextView)findViewById(R.id.ticket_a)).setText("里數機票："+t_a+"張\n從"+State_a+"到"+Des_a+"\n累積里數："+MeailgeA);
         }
         else {
             t_b--;
             Des_b = t.getText().toString();
-            ((TextView)findViewById(R.id.ticket_b)).setText("里數機票："+t_b+"張\n從"+State_b+"到"+Des_b);
+            ((TextView)findViewById(R.id.ticket_b)).setText("里數機票："+t_b+"張\n從"+State_b+"到"+Des_b+"\n累積里數："+MeailgeB);
         }
 
         if(t_a<0||t_b<0){
-            MeailgeA = Math.sqrt(Math.pow(country_coordinate[a][0]-country_coordinate[start_A][0], 2)+Math.pow(country_coordinate[a][1]-country_coordinate[start_A][1], 2));
-            MeailgeB = Math.sqrt(Math.pow(country_coordinate[b][0]-country_coordinate[start_B][0], 2)+Math.pow(country_coordinate[b][1]-country_coordinate[start_B][1], 2));
             winner = MeailgeA>=MeailgeB;
             endthegame();
         }
@@ -258,7 +262,7 @@ public class GamePage_v2 extends AppCompatActivity implements /*LocationListener
             FindState();
             button_set();
             onMapReady(Map);
-            ((TextView)findViewById(R.id.ticket_a)).setText("里數機票："+t_a+"張");
+            ((TextView)findViewById(R.id.ticket_a)).setText("里數機票："+t_a+"張\n累積里數："+MeailgeA);
             tos.setText("GO");
             tos.show();
             }
@@ -268,13 +272,11 @@ public class GamePage_v2 extends AppCompatActivity implements /*LocationListener
             FindState();
             button_set();
             onMapReady(Map);
-            ((TextView)findViewById(R.id.ticket_b)).setText("里數機票："+t_b+"張");
+            ((TextView)findViewById(R.id.ticket_b)).setText("里數機票："+t_b+"張\n累積里數："+MeailgeB);
             tos.setText("GO");
             tos.show();
         }
         if (a==start_B||b==start_A){
-            MeailgeA = Math.sqrt(Math.pow(country_coordinate[a][0]-country_coordinate[start_A][0], 2)+Math.pow(country_coordinate[a][1]-country_coordinate[start_A][1], 2));
-            MeailgeB = Math.sqrt(Math.pow(country_coordinate[b][0]-country_coordinate[start_B][0], 2)+Math.pow(country_coordinate[b][1]-country_coordinate[start_B][1], 2));
             winner = a==start_B;
         }
     }

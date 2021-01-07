@@ -29,8 +29,8 @@ public class LastPage extends AppCompatActivity {
         Double MeailgeA = game.getDoubleExtra("MeailgeA", -1);
         Double MeailgeB = game.getDoubleExtra("MeailgeB", -1);
         Boolean winner = game.getBooleanExtra("Winner_is_A?", true);
-        ((TextView)findViewById(R.id.textView2)).setText(winner?"HA HA！YOU WIN！":"OH NO！YOU LOOSE！\n里程數："+String.format("%.2f",MeailgeA));
-        ((TextView)findViewById(R.id.textView3)).setText(winner?"OH NO！YOU LOOSE！":"HA HA！YOU WIN！\n里程數："+String.format("%.2f",MeailgeB));
+        ((TextView)findViewById(R.id.textView2)).setText((winner?"HA HA！YOU WIN！":"OH NO！YOU LOOSE！")+"\n里程數："+String.format("%.2f",MeailgeA));
+        ((TextView)findViewById(R.id.textView3)).setText((winner?"OH NO！YOU LOOSE！":"HA HA！YOU WIN！")+"\n里程數："+String.format("%.2f",MeailgeB));
 
     }
     public void backTofirst(View v){
