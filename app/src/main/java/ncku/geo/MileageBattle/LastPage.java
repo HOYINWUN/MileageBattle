@@ -60,4 +60,10 @@ public class LastPage extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    @Override
+    protected void onPause() {
+        mp.stop();
+        super.onPause();
+    }
 }
