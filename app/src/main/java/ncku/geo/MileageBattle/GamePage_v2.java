@@ -127,8 +127,14 @@ public class GamePage_v2 extends AppCompatActivity implements /*LocationListener
 
         t_a = 5;
         t_b = 5;
-        State_a = country_pair[card_set][0];
-        State_b = country_pair[card_set][1];
+        if(start_with_player==1){
+            State_a = country_pair[card_set][0];
+            State_b = country_pair[card_set][1];
+        }else{
+            State_a = country_pair[card_set][1];
+            State_b = country_pair[card_set][0];
+        }
+
         FindState();
         start_A = a;
         start_B = b;
