@@ -245,13 +245,13 @@ public class GamePage_v2 extends AppCompatActivity implements /*LocationListener
         }
         if(Des_b!= ""){
             for(int i=1; i<=4; i++){
-                countA += Integer.parseInt(country[d_b][i]) == (B1-R.drawable.f00)?1:0;
-                countA += Integer.parseInt(country[d_b][i]) == (B2-R.drawable.f00)?1:0;
-                countA += Integer.parseInt(country[d_b][i]) == (B3-R.drawable.f00)?1:0;
+                countB += Integer.parseInt(country[d_b][i]) == (B1-R.drawable.f00)?1:0;
+                countB += Integer.parseInt(country[d_b][i]) == (B2-R.drawable.f00)?1:0;
+                countB += Integer.parseInt(country[d_b][i]) == (B3-R.drawable.f00)?1:0;
             }
         }
 
-            //((TextView)findViewById(R.id.textView)).setText((A1-R.drawable.f00)+" "+(A2-R.drawable.f00)+" "+(A3-R.drawable.f00)+"\n"+Integer.parseInt(country[a][1])+" "+Integer.parseInt(country[a][2])+" "+Integer.parseInt(country[a][3])+Des_a+"\n"+countA);
+            ((TextView)findViewById(R.id.textView)).setText((B1-R.drawable.f00)+" "+(B2-R.drawable.f00)+" "+(B3-R.drawable.f00)+"\n"+Integer.parseInt(country[d_b][1])+" "+Integer.parseInt(country[d_b][2])+" "+Integer.parseInt(country[d_b][3])+Des_b+"\n"+countB);
         if(countA==3){
             State_a = Des_a;
             Des_a = "";
